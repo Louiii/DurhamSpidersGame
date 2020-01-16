@@ -380,7 +380,8 @@ public class GameManager : MonoBehaviour
         float scale = UnityEngine.Random.Range(0.0f, 1.0f);
         scale = scale * scale * 4 + 1;
 
-        Vector3 start = RandomNavmeshLocation(50.0f, player.transform.position);
+        Ray ray = playerCam.GetComponent<Camera>().ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+        Vector3 start = RandomNavmeshLocation(50.0f, player.transform.position + ray.direction * 50.0f);
 
         if (start != Vector3.zero)
         {
